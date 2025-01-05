@@ -29,10 +29,6 @@ public class UserController {
     public String updateUser(@RequestBody UserDTO userDTO){
         return userService.updateUser(userDTO);
     }
-
-    @PutMapping("/user")
-    public String updateUser(@RequestBody UserDTO userDTO){
-        return userService.updateUser(userDTO);
-    }
-
 }
+
+
