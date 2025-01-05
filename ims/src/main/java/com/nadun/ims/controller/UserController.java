@@ -30,4 +30,9 @@ public class UserController {
         return userService.updateUser(userDTO);
     }
 
+    @PutMapping("/user")
+    public String updateUser(@RequestBody UserDTO userDTO){
+        return userService.updateUser(userDTO);
+    }
+
 }
