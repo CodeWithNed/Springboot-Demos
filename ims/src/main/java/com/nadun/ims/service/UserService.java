@@ -25,4 +25,16 @@ public class UserService {
         return modelMapper.map(users, new TypeToken<List<UserDTO>>(){}.getType());
     }
 
+    public String saveUser(UserDTO userDTO){
+        userRepository.save(modelMapper.map(userDTO , User.class));
+        return userDTO.getUserId() + " " + userDTO.getUserName() + " saved successfully.";
+    }
+
+    public String updateUser(UserDTO userDTO) {
+        userRepository.save(modelMapper.map(userDTO , User.class));
+        return userDTO.getUserId() + " " + userDTO.getUserName() + " updated successfully.";
+
+    }
+
+
 }
