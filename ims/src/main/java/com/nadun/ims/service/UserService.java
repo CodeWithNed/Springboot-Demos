@@ -37,4 +37,27 @@ public class UserService {
     }
 
 
+    public UserDTO getUserById(Long id) {
+        return null;
+    }
+
+    public String deleteUser(Long id) {
+        return null;
+    }
+
+    public String updateUserName(Long id, String name) {
+        return name;
+    }
+
+    public List<UserDTO> searchUsersByName(String name) {
+        return null;
+    }
+
+    public String saveUsers(List<UserDTO> userDTOList) {
+        return null;
+    }
+
+    public boolean doesUserExist(Long id) {
+        return false;
+    }
 }
