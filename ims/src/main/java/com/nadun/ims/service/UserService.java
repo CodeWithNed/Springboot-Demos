@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,10 +37,15 @@ public class UserService {
 
     }
 
-
-    public UserDTO getUserById(Long id) {
-        return null;
+    public UserDTO getUserById(Integer id) throws Exception {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            return modelMapper.map(optionalUser.get(), UserDTO.class);
+        } else {
+            throw new Exception("User with ID " + id + " not found.");
+        }
     }
+
 
     public String deleteUser(Long id) {
         return null;
