@@ -34,11 +34,10 @@ public class UserService {
     public String updateUser(UserDTO userDTO) {
         userRepository.save(modelMapper.map(userDTO , User.class));
         return userDTO.getUserId() + " " + userDTO.getUserName() + " updated successfully.";
-
     }
 
     public UserDTO getUserById(Integer id) throws Exception {
-        Optional<User> optionalUser = userRepository.findById(id);
+        Optional<User> optionalUser = userRepository.findById(Long.valueOf(id));
         if (optionalUser.isPresent()) {
             return modelMapper.map(optionalUser.get(), UserDTO.class);
         } else {
@@ -46,24 +45,40 @@ public class UserService {
         }
     }
 
-
     public String deleteUser(Long id) {
-        return null;
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            userRepository.delete(optionalUser.get());
+            return "User with ID " + id + " deleted successfully.";
+        } else {
+            return "User with ID " + id + " not found.";
+        }
     }
 
     public String updateUserName(Long id, String name) {
-        return name;
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setUserName(name);
+            userRepository.save(user);
+            return "User name updated to " + name + " for ID " + id + ".";
+        } else {
+            return "User with ID " + id + " not found.";
+        }
     }
 
     public List<UserDTO> searchUsersByName(String name) {
-        return null;
+        List<User> users = userRepository.findByUserNameContaining(name);
+        return modelMapper.map(users, new TypeToken<List<UserDTO>>(){}.getType());
     }
 
     public String saveUsers(List<UserDTO> userDTOList) {
-        return null;
+        List<User> users = modelMapper.map(userDTOList, new TypeToken<List<User>>(){}.getType());
+        userRepository.saveAll(users);
+        return userDTOList.size() + " users saved successfully.";
     }
 
     public boolean doesUserExist(Long id) {
-        return false;
+        return userRepository.existsById(id);
     }
 }
