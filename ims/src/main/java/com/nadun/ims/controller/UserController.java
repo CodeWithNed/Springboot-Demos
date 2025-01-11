@@ -58,8 +58,8 @@ public class UserController {
      * @return the user details.
      */
     @GetMapping("/user/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public UserDTO getUserById(@PathVariable Long id) throws Exception {
+        return userService.getUserById(Math.toIntExact(id));
     }
 
     /**
