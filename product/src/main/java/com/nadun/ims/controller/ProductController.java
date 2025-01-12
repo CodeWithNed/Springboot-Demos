@@ -1,7 +1,7 @@
 package com.nadun.ims.controller;
 
-import com.nadun.ims.dto.UserDTO;
-import com.nadun.ims.service.UserService;
+import com.nadun.ims.dto.ProductDTO;
+import com.nadun.ims.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +10,10 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
-public class UserController {
+public class ProductController {
 
     @Autowired
-    UserService userService;
+    ProductService productService;
 
     // ==========================
     // CRUD Operations
@@ -25,30 +25,30 @@ public class UserController {
      * @return a list of all users.
      */
     @GetMapping("/users")
-    public List<UserDTO> allUsers() {
-        return userService.getAllUsers();
+    public List<ProductDTO> allProducts() {
+        return productService.getAllProducts();
     }
 
     /**
      * Save a new user.
      *
-     * @param userDTO the user details to be saved.
+     * @param productDTO the user details to be saved.
      * @return a success message.
      */
     @PostMapping("/user")
-    public String saveUser(@RequestBody UserDTO userDTO) {
-        return userService.saveUser(userDTO);
+    public String saveUser(@RequestBody ProductDTO productDTO) {
+        return productService.saveProduct(productDTO);
     }
 
     /**
      * Update an existing user.
      *
-     * @param userDTO the updated user details.
+     * @param productDTO the updated user details.
      * @return a success message.
      */
     @PutMapping("/user")
-    public String updateUser(@RequestBody UserDTO userDTO) {
-        return userService.updateUser(userDTO);
+    public String updateUser(@RequestBody ProductDTO productDTO) {
+        return productService.updateProduct(productDTO);
     }
 
     /**
@@ -58,8 +58,8 @@ public class UserController {
      * @return the user details.
      */
     @GetMapping("/user/{id}")
-    public UserDTO getUserById(@PathVariable Long id) throws Exception {
-        return userService.getUserById(Math.toIntExact(id));
+    public ProductDTO getProductById(@PathVariable Long id) throws Exception {
+        return productService.getProductById(Math.toIntExact(id));
     }
 
     /**
@@ -69,8 +69,8 @@ public class UserController {
      * @return a success message.
      */
     @DeleteMapping("/user/{id}")
-    public String deleteUser(@PathVariable String id) {
-        return userService.deleteUser(Long.valueOf(id));
+    public String deleteProduct(@PathVariable String id) {
+        return productService.deleteProduct(Long.valueOf(id));
     }
 
     // ==========================
@@ -85,8 +85,8 @@ public class UserController {
      * @return a success message.
      */
     @PatchMapping("/user/{id}/name")
-    public String updateUserName(@PathVariable Long id, @RequestParam String name) {
-        return userService.updateUserName(id, name);
+    public String updateProductName(@PathVariable Long id, @RequestParam String name) {
+        return productService.updateProductName(id, name);
     }
 
     // ==========================
@@ -100,19 +100,19 @@ public class UserController {
      * @return a list of users matching the search criteria.
      */
     @GetMapping("/users/search")
-    public List<UserDTO> searchUsersByName(@RequestParam String name) {
-        return userService.searchUsersByName(name);
+    public List<ProductDTO> searchProductsByName(@RequestParam String name) {
+        return productService.searchProductsByName(name);
     }
 
     /**
      * Save multiple users in bulk.
      *
-     * @param userDTOList the list of users to be saved.
+     * @param productDTOList the list of users to be saved.
      * @return a success message.
      */
     @PostMapping("/users")
-    public String saveUsers(@RequestBody List<UserDTO> userDTOList) {
-        return userService.saveUsers(userDTOList);
+    public String saveProducts(@RequestBody List<ProductDTO> productDTOList) {
+        return productService.saveProducts(productDTOList);
     }
 
     /**
@@ -122,7 +122,7 @@ public class UserController {
      * @return true if the user exists, false otherwise.
      */
     @GetMapping("/user/{id}/exists")
-    public String doesUserExist(@PathVariable Long id) {
-        return userService.doesUserExist(id);
+    public String doesProductExist(@PathVariable Long id) {
+        return productService.doesProductExist(id);
     }
 }
