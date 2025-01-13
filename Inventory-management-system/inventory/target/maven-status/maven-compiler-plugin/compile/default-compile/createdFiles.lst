@@ -1,0 +1,9 @@
+com\nadun\ims\InventoryApplication.class
+com\nadun\ims\service\InventoryService$1.class
+com\nadun\ims\dto\InventoryDTO.class
+com\nadun\ims\controller\InventoryController.class
+com\nadun\ims\service\InventoryService$2.class
+com\nadun\ims\service\InventoryService$3.class
+com\nadun\ims\service\InventoryService.class
+com\nadun\ims\repository\InventoryRepository.class
+com\nadun\ims\model\Inventory.class
