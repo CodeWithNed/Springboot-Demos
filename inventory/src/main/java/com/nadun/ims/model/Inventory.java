@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Inventory {
     @Id
-    private int userId;
-    private String userName;
+    private int inventoryId;
+    private String inventoryName;
 }

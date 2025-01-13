@@ -20,55 +20,55 @@ public class ProductController {
     // ==========================
 
     /**
-     * Retrieve all users.
+     * Retrieve all products.
      *
-     * @return a list of all users.
+     * @return a list of all products.
      */
-    @GetMapping("/users")
+    @GetMapping("/products")
     public List<ProductDTO> allProducts() {
         return productService.getAllProducts();
     }
 
     /**
-     * Save a new user.
+     * Save a new product.
      *
-     * @param productDTO the user details to be saved.
+     * @param productDTO the product details to be saved.
      * @return a success message.
      */
-    @PostMapping("/user")
-    public String saveUser(@RequestBody ProductDTO productDTO) {
+    @PostMapping("/product")
+    public String saveproduct(@RequestBody ProductDTO productDTO) {
         return productService.saveProduct(productDTO);
     }
 
     /**
-     * Update an existing user.
+     * Update an existing product.
      *
-     * @param productDTO the updated user details.
+     * @param productDTO the updated product details.
      * @return a success message.
      */
-    @PutMapping("/user")
-    public String updateUser(@RequestBody ProductDTO productDTO) {
+    @PutMapping("/product")
+    public String updateproduct(@RequestBody ProductDTO productDTO) {
         return productService.updateProduct(productDTO);
     }
 
     /**
-     * Retrieve a user by their ID.
+     * Retrieve a product by their ID.
      *
-     * @param id the user ID.
-     * @return the user details.
+     * @param id the product ID.
+     * @return the product details.
      */
-    @GetMapping("/user/{id}")
+    @GetMapping("/product/{id}")
     public ProductDTO getProductById(@PathVariable Long id) throws Exception {
         return productService.getProductById(Math.toIntExact(id));
     }
 
     /**
-     * Delete a user by their ID.
+     * Delete a product by their ID.
      *
-     * @param id the user ID.
+     * @param id the product ID.
      * @return a success message.
      */
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/product/{id}")
     public String deleteProduct(@PathVariable String id) {
         return productService.deleteProduct(Long.valueOf(id));
     }
@@ -78,13 +78,13 @@ public class ProductController {
     // ==========================
 
     /**
-     * Update the name of a user.
+     * Update the name of a product.
      *
-     * @param id   the user ID.
-     * @param name the new name for the user.
+     * @param id   the product ID.
+     * @param name the new name for the product.
      * @return a success message.
      */
-    @PatchMapping("/user/{id}/name")
+    @PatchMapping("/product/{id}/name")
     public String updateProductName(@PathVariable Long id, @RequestParam String name) {
         return productService.updateProductName(id, name);
     }
@@ -94,34 +94,34 @@ public class ProductController {
     // ==========================
 
     /**
-     * Search for users by name.
+     * Search for products by name.
      *
      * @param name the name or partial name to search for.
-     * @return a list of users matching the search criteria.
+     * @return a list of products matching the search criteria.
      */
-    @GetMapping("/users/search")
+    @GetMapping("/products/search")
     public List<ProductDTO> searchProductsByName(@RequestParam String name) {
         return productService.searchProductsByName(name);
     }
 
     /**
-     * Save multiple users in bulk.
+     * Save multiple products in bulk.
      *
-     * @param productDTOList the list of users to be saved.
+     * @param productDTOList the list of products to be saved.
      * @return a success message.
      */
-    @PostMapping("/users")
+    @PostMapping("/products")
     public String saveProducts(@RequestBody List<ProductDTO> productDTOList) {
         return productService.saveProducts(productDTOList);
     }
 
     /**
-     * Check if a user exists by their ID.
+     * Check if a product exists by their ID.
      *
-     * @param id the user ID.
-     * @return true if the user exists, false otherwise.
+     * @param id the product ID.
+     * @return true if the product exists, false otherwise.
      */
-    @GetMapping("/user/{id}/exists")
+    @GetMapping("/product/{id}/exists")
     public String doesProductExist(@PathVariable Long id) {
         return productService.doesProductExist(id);
     }
