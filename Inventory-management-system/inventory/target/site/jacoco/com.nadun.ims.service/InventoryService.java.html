@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InventoryService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Archetype - inventory</a> &gt; <a href="index.source.html" class="el_package">com.nadun.ims.service</a> &gt; <span class="el_source">InventoryService.java</span></div><h1>InventoryService.java</h1><pre class="source lang-java linenums">package com.nadun.ims.service;
+
+import com.nadun.ims.dto.InventoryDTO;
+import com.nadun.ims.model.Inventory;
+import com.nadun.ims.repository.InventoryRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional
+<span class="fc" id="L17">public class InventoryService {</span>
+    @Autowired
+    private InventoryRepository inventoryRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    public List&lt;InventoryDTO&gt; getAllInventorys(){
+<span class="fc" id="L25">        List&lt;Inventory&gt; inventories = inventoryRepository.findAll();</span>
+<span class="fc" id="L26">        return modelMapper.map(inventories, new TypeToken&lt;List&lt;InventoryDTO&gt;&gt;(){}.getType());</span>
+    }
+
+    public String saveInventory(InventoryDTO inventoryDTO){
+<span class="fc" id="L30">        inventoryRepository.save(modelMapper.map(inventoryDTO, Inventory.class));</span>
+<span class="fc" id="L31">        return inventoryDTO.getInventoryId() + &quot; &quot; + inventoryDTO.getInventoryName() + &quot; saved successfully.&quot;;</span>
+    }
+
+    public String updateInventory(InventoryDTO inventoryDTO) {
+<span class="fc" id="L35">        inventoryRepository.save(modelMapper.map(inventoryDTO, Inventory.class));</span>
+<span class="fc" id="L36">        return inventoryDTO.getInventoryId() + &quot; &quot; + inventoryDTO.getInventoryName() + &quot; updated successfully.&quot;;</span>
+    }
+
+    public InventoryDTO getInventoryById(Integer id) throws Exception {
+<span class="fc" id="L40">        Optional&lt;Inventory&gt; optionalInventory = inventoryRepository.findById(Long.valueOf(id));</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (optionalInventory.isPresent()) {</span>
+<span class="fc" id="L42">            return modelMapper.map(optionalInventory.get(), InventoryDTO.class);</span>
+        } else {
+<span class="fc" id="L44">            throw new Exception(&quot;Inventory with ID &quot; + id + &quot; not found.&quot;);</span>
+        }
+    }
+
+    public String deleteInventory(Long id) {
+<span class="fc" id="L49">        Optional&lt;Inventory&gt; optionalInventory = inventoryRepository.findById(id);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (optionalInventory.isPresent()) {</span>
+<span class="fc" id="L51">            inventoryRepository.delete(optionalInventory.get());</span>
+<span class="fc" id="L52">            return &quot;Inventory with ID &quot; + id + &quot; deleted successfully.&quot;;</span>
+        } else {
+<span class="fc" id="L54">            return &quot;Inventory with ID &quot; + id + &quot; not found.&quot;;</span>
+        }
+    }
+
+    public String updateInventoryName(Long id, String name) {
+<span class="fc" id="L59">        Optional&lt;Inventory&gt; optionalInventory = inventoryRepository.findById(id);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (optionalInventory.isPresent()) {</span>
+<span class="fc" id="L61">            Inventory inventory = optionalInventory.get();</span>
+<span class="fc" id="L62">            inventory.setInventoryName(name);</span>
+<span class="fc" id="L63">            inventoryRepository.save(inventory);</span>
+<span class="fc" id="L64">            return &quot;Inventory name updated to &quot; + name + &quot; for ID &quot; + id + &quot;.&quot;;</span>
+        } else {
+<span class="fc" id="L66">            return &quot;Inventory with ID &quot; + id + &quot; not found.&quot;;</span>
+        }
+    }
+
+    public List&lt;InventoryDTO&gt; searchInventorysByName(String name) {
+<span class="fc" id="L71">        List&lt;Inventory&gt; inventories = inventoryRepository.findByInventoryNameContaining(name);</span>
+<span class="fc" id="L72">        return modelMapper.map(inventories, new TypeToken&lt;List&lt;InventoryDTO&gt;&gt;(){}.getType());</span>
+    }
+
+    public String saveInventorys(List&lt;InventoryDTO&gt; inventoryDTOList) {
+<span class="fc" id="L76">        List&lt;Inventory&gt; inventories = modelMapper.map(inventoryDTOList, new TypeToken&lt;List&lt;Inventory&gt;&gt;(){}.getType());</span>
+<span class="fc" id="L77">        inventoryRepository.saveAll(inventories);</span>
+<span class="fc" id="L78">        return inventoryDTOList.size() + &quot; inventories saved successfully.&quot;;</span>
+    }
+
+    public String doesInventoryExist(Long id) {
+<span class="fc" id="L82">        boolean existance = inventoryRepository.existsById(id);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if(existance){</span>
+<span class="fc" id="L84">            return &quot;Inventory exists.&quot;;</span>
+        }
+        else{
+<span class="fc" id="L87">            return &quot;Inventory doesn't exists.&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

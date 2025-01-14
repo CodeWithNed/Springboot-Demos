@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InventoryController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Archetype - inventory</a> &gt; <a href="index.source.html" class="el_package">com.nadun.ims.controller</a> &gt; <span class="el_source">InventoryController.java</span></div><h1>InventoryController.java</h1><pre class="source lang-java linenums">package com.nadun.ims.controller;
+
+import com.nadun.ims.dto.InventoryDTO;
+import com.nadun.ims.service.InventoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@CrossOrigin
+@RequestMapping(&quot;/api/v1&quot;)
+<span class="fc" id="L13">public class InventoryController {</span>
+
+    @Autowired
+    InventoryService inventoryService;
+
+    // ==========================
+    // CRUD Operations
+    // ==========================
+
+    /**
+     * Retrieve all inventorys.
+     *
+     * @return a list of all inventorys.
+     */
+    @GetMapping(&quot;/inventorys&quot;)
+    public List&lt;InventoryDTO&gt; allInventorys() {
+<span class="nc" id="L29">        return inventoryService.getAllInventorys();</span>
+    }
+
+    /**
+     * Save a new inventory.
+     *
+     * @param inventoryDTO the inventory details to be saved.
+     * @return a success message.
+     */
+    @PostMapping(&quot;/inventory&quot;)
+    public String saveInventory(@RequestBody InventoryDTO inventoryDTO) {
+<span class="nc" id="L40">        return inventoryService.saveInventory(inventoryDTO);</span>
+    }
+
+    /**
+     * Update an existing inventory.
+     *
+     * @param inventoryDTO the updated inventory details.
+     * @return a success message.
+     */
+    @PutMapping(&quot;/inventory&quot;)
+    public String updateInventory(@RequestBody InventoryDTO inventoryDTO) {
+<span class="nc" id="L51">        return inventoryService.updateInventory(inventoryDTO);</span>
+    }
+
+    /**
+     * Retrieve a inventory by their ID.
+     *
+     * @param id the inventory ID.
+     * @return the inventory details.
+     */
+    @GetMapping(&quot;/inventory/{id}&quot;)
+    public InventoryDTO getInventoryById(@PathVariable Long id) throws Exception {
+<span class="nc" id="L62">        return inventoryService.getInventoryById(Math.toIntExact(id));</span>
+    }
+
+    /**
+     * Delete a inventory by their ID.
+     *
+     * @param id the inventory ID.
+     * @return a success message.
+     */
+    @DeleteMapping(&quot;/inventory/{id}&quot;)
+    public String deleteInventory(@PathVariable String id) {
+<span class="nc" id="L73">        return inventoryService.deleteInventory(Long.valueOf(id));</span>
+    }
+
+    // ==========================
+    // Partial Updates
+    // ==========================
+
+    /**
+     * Update the name of a inventory.
+     *
+     * @param id   the inventory ID.
+     * @param name the new name for the inventory.
+     * @return a success message.
+     */
+    @PatchMapping(&quot;/inventory/{id}/name&quot;)
+    public String updateInventoryName(@PathVariable Long id, @RequestParam String name) {
+<span class="nc" id="L89">        return inventoryService.updateInventoryName(id, name);</span>
+    }
+
+    // ==========================
+    // Additional Functionality
+    // ==========================
+
+    /**
+     * Search for inventorys by name.
+     *
+     * @param name the name or partial name to search for.
+     * @return a list of inventorys matching the search criteria.
+     */
+    @GetMapping(&quot;/inventorys/search&quot;)
+    public List&lt;InventoryDTO&gt; searchInventorysByName(@RequestParam String name) {
+<span class="nc" id="L104">        return inventoryService.searchInventorysByName(name);</span>
+    }
+
+    /**
+     * Save multiple inventorys in bulk.
+     *
+     * @param inventoryDTOList the list of inventorys to be saved.
+     * @return a success message.
+     */
+    @PostMapping(&quot;/inventorys&quot;)
+    public String saveInventorys(@RequestBody List&lt;InventoryDTO&gt; inventoryDTOList) {
+<span class="nc" id="L115">        return inventoryService.saveInventorys(inventoryDTOList);</span>
+    }
+
+    /**
+     * Check if a inventory exists by their ID.
+     *
+     * @param id the inventory ID.
+     * @return true if the inventory exists, false otherwise.
+     */
+    @GetMapping(&quot;/inventory/{id}/exists&quot;)
+    public String doesInventoryExist(@PathVariable Long id) {
+<span class="nc" id="L126">        return inventoryService.doesInventoryExist(id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
