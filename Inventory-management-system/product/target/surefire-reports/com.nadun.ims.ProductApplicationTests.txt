@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.nadun.ims.ProductApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.76 s -- in com.nadun.ims.ProductApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.73 s -- in com.nadun.ims.ProductApplicationTests

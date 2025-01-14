@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nadun.ims.InventoryApplicationTests" time="19.219" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.nadun.ims.service.InventoryServiceTest" time="2.621" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -66,43 +66,17 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[ims] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.nadun.ims.InventoryApplicationTests" time="1.304">
-    <system-out><![CDATA[23:48:12.384 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nadun.ims.InventoryApplicationTests]: InventoryApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:48:12.819 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nadun.ims.InventoryApplication for test class com.nadun.ims.InventoryApplicationTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.4.1)
-
-2025-01-14T23:48:14.046+05:30  INFO 32760 --- [ims] [           main] c.nadun.ims.InventoryApplicationTests    : Starting InventoryApplicationTests using Java 17.0.12 with PID 32760 (started by nadun in C:\Users\Nadun kumarasinghe\Documents\GitHub\Springboot-Demos\Inventory-management-system\inventory)
-2025-01-14T23:48:14.052+05:30  INFO 32760 --- [ims] [           main] c.nadun.ims.InventoryApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2025-01-14T23:48:16.820+05:30  INFO 32760 --- [ims] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-14T23:48:16.955+05:30  INFO 32760 --- [ims] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 1 JPA repository interface.
-2025-01-14T23:48:18.589+05:30  INFO 32760 --- [ims] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-14T23:48:19.146+05:30  INFO 32760 --- [ims] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2025-01-14T23:48:19.368+05:30  INFO 32760 --- [ims] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-01-14T23:48:20.740+05:30  INFO 32760 --- [ims] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-14T23:48:20.816+05:30  INFO 32760 --- [ims] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-01-14T23:48:21.566+05:30  INFO 32760 --- [ims] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3977c7e4
-2025-01-14T23:48:21.575+05:30  INFO 32760 --- [ims] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-01-14T23:48:21.975+05:30  INFO 32760 --- [ims] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.30
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-01-14T23:48:25.383+05:30  INFO 32760 --- [ims] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-14T23:48:25.583+05:30  INFO 32760 --- [ims] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-14T23:48:27.665+05:30  WARN 32760 --- [ims] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-14T23:48:27.875+05:30  INFO 32760 --- [ims] [           main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-01-14T23:48:29.527+05:30  INFO 32760 --- [ims] [           main] c.nadun.ims.InventoryApplicationTests    : Started InventoryApplicationTests in 16.121 seconds (process running for 19.993)
-]]></system-out>
-  </testcase>
+  <testcase name="testSaveInventory" classname="com.nadun.ims.service.InventoryServiceTest" time="2.356"/>
+  <testcase name="testGetInventoryById_Success" classname="com.nadun.ims.service.InventoryServiceTest" time="0.03"/>
+  <testcase name="testGetInventoryById_NotFound" classname="com.nadun.ims.service.InventoryServiceTest" time="0.022"/>
+  <testcase name="testSaveInventorys" classname="com.nadun.ims.service.InventoryServiceTest" time="0.038"/>
+  <testcase name="testSearchInventorysByName" classname="com.nadun.ims.service.InventoryServiceTest" time="0.025"/>
+  <testcase name="testUpdateInventory" classname="com.nadun.ims.service.InventoryServiceTest" time="0.013"/>
+  <testcase name="testGetAllInventorys" classname="com.nadun.ims.service.InventoryServiceTest" time="0.03"/>
+  <testcase name="testDeleteInventory_Success" classname="com.nadun.ims.service.InventoryServiceTest" time="0.014"/>
+  <testcase name="testDeleteInventory_NotFound" classname="com.nadun.ims.service.InventoryServiceTest" time="0.013"/>
+  <testcase name="testDoesInventoryExist_True" classname="com.nadun.ims.service.InventoryServiceTest" time="0.013"/>
+  <testcase name="testDoesInventoryExist_False" classname="com.nadun.ims.service.InventoryServiceTest" time="0.009"/>
+  <testcase name="testUpdateInventoryName_NotFound" classname="com.nadun.ims.service.InventoryServiceTest" time="0.012"/>
+  <testcase name="testUpdateInventoryName_Success" classname="com.nadun.ims.service.InventoryServiceTest" time="0.011"/>
 </testsuite>

@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Archetype - inventory,com.nadun.ims.service,InventoryService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
+Archetype - inventory,com.nadun.ims.service,InventoryService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
+Archetype - inventory,com.nadun.ims.service,InventoryService.new TypeToken() {...},0,6,0,0,0,1,0,1,0,1
+Archetype - inventory,com.nadun.ims.service,InventoryService,0,169,0,8,0,32,0,14,0,10
+Archetype - inventory,com.nadun.ims.controller,InventoryController,49,3,0,0,9,1,9,1,9,1
+Archetype - inventory,com.nadun.ims,InventoryApplication,5,7,0,0,2,2,1,2,1,2
