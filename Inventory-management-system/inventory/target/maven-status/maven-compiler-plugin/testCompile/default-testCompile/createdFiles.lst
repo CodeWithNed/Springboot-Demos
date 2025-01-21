@@ -1,5 +1,11 @@
+com\nadun\ims\controller\InventoryServiceTest$3.class
+com\nadun\ims\controller\InventoryServiceTest.class
+com\nadun\ims\model\InventoryTest.class
 com\nadun\ims\service\InventoryServiceTest$3.class
+com\nadun\ims\dto\InventoryDTOTest.class
+com\nadun\ims\InventoryApplicationTests.class
+com\nadun\ims\controller\InventoryServiceTest$1.class
 com\nadun\ims\service\InventoryServiceTest.class
 com\nadun\ims\service\InventoryServiceTest$1.class
 com\nadun\ims\service\InventoryServiceTest$2.class
-com\nadun\ims\InventoryApplicationTests.class
+com\nadun\ims\controller\InventoryServiceTest$2.class
